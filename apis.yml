@@ -11,16 +11,11 @@ created: '2024-12-03'
 modified: '2026-03-16'
 position: Consumer
 description: >-
-  The United States Fire Administration (USFA) is a government agency under the
-  Federal Emergency Management Agency (FEMA) that is responsible for providing
-  leadership and support to fire departments across the country. The USFA works
-  to improve fire prevention and safety by disseminating training and education
-  programs, conducting research on fire-related issues, and developing national
-  fire prevention initiatives. Additionally, the agency provides funding for
-  fire departments to purchase equipment, conduct training exercises, and
-  enhance their capabilities. Overall, the USFA plays a critical role in
-  advancing fire prevention and safety measures in the United States to protect
-  lives and property from the devastating effects of fires.
+  The United States Fire Administration (USFA) is a government agency under the Federal
+  Emergency Management Agency (FEMA) that is responsible for providing leadership
+  and support to fire departments across the country. The USFA works to improve fire
+  prevention and safety by disseminating training and education programs, conducting
+  research on fire-related issues, and developing national fire prevention initiatives.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
