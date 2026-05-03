@@ -1,0 +1,69 @@
+rules:
+  openfema-operation-ids-required:
+    description: All operations must have operationIds.
+    message: Operation must have an operationId.
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: operationId
+      function: truthy
+    severity: error
+
+  openfema-operations-have-tags:
+    description: All operations should be tagged for grouping.
+    message: Operation must include at least one tag.
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: tags
+      function: truthy
+    severity: warn
+
+  openfema-parameters-have-descriptions:
+    description: All query parameters should have descriptions.
+    message: Parameter must have a description.
+    given: "$.paths[*][*].parameters[*]"
+    then:
+      field: description
+      function: truthy
+    severity: warn
+
+  openfema-success-responses:
+    description: All operations must document 200 success response.
+    message: Operation must document a 200 success response.
+    given: "$.paths[*][get,post].responses"
+    then:
+      field: "200"
+      function: truthy
+    severity: error
+
+  openfema-json-responses:
+    description: OpenFEMA operations should support JSON responses.
+    message: >-
+      OpenFEMA API operations should document application/json response content type.
+    given: "$.paths[*][get].responses.200.content"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            application/json:
+              type: object
+    severity: warn
+
+  openfema-schemas-have-descriptions:
+    description: Schema components should have descriptions.
+    message: Schema component must include a description.
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy
+    severity: warn
+
+  openfema-info-contact:
+    description: API info should include contact information.
+    message: API info block must contain a contact object.
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+    severity: warn

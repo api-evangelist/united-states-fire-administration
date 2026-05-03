@@ -1,0 +1,453 @@
+openapi: 3.0.3
+info:
+  title: OpenFEMA Fire Data API
+  description: >-
+    The OpenFEMA API provides free, read-only access to FEMA and USFA datasets
+    including National Fire Incident Reporting System (NFIRS) annual public data,
+    disaster declarations, FEMA public assistance grants, and other emergency
+    management datasets. No API key is required. The RESTful interface uses
+    query string parameters for filtering, sorting, pagination, and field selection.
+    Base path for all endpoints is https://www.fema.gov/api/open.
+  version: 2.0.0
+  contact:
+    name: OpenFEMA
+    url: https://www.fema.gov/about/openfema
+    email: openfema@fema.dhs.gov
+  license:
+    name: Public Domain
+    url: https://www.usa.gov/government-works
+servers:
+  - url: https://www.fema.gov/api/open
+    description: OpenFEMA API
+tags:
+  - name: Fire Data
+    description: USFA fire incident and reporting data
+  - name: Datasets
+    description: OpenFEMA dataset metadata
+  - name: Disaster Declarations
+    description: FEMA disaster declaration data
+paths:
+  /v1/OpenFemaDataSets:
+    get:
+      operationId: listDataSets
+      summary: List Available Data Sets
+      description: >-
+        Retrieve metadata about all available OpenFEMA datasets including
+        names, descriptions, endpoints, data dictionaries, and last update times.
+      tags:
+        - Datasets
+      parameters:
+        - name: $filter
+          in: query
+          description: OData filter expression (e.g. name eq 'FemaWebDisasterDeclarations')
+          required: false
+          schema:
+            type: string
+        - name: $select
+          in: query
+          description: Comma-separated list of fields to return
+          required: false
+          schema:
+            type: string
+          example: name,description,lastDataModifiedDate
+        - name: $top
+          in: query
+          description: Maximum number of records to return (default 1000, max 10000)
+          required: false
+          schema:
+            type: integer
+            default: 1000
+        - name: $skip
+          in: query
+          description: Number of records to skip for pagination
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: $format
+          in: query
+          description: Response format
+          required: false
+          schema:
+            type: string
+            enum:
+              - json
+              - csv
+              - jsona
+            default: json
+      responses:
+        '200':
+          description: List of available OpenFEMA datasets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataSetList'
+
+  /v1/OpenFemaDataSetFields:
+    get:
+      operationId: listDataSetFields
+      summary: List Data Set Fields
+      description: >-
+        Retrieve field-level metadata for OpenFEMA datasets including field
+        names, data types, descriptions, and associated dataset.
+      tags:
+        - Datasets
+      parameters:
+        - name: $filter
+          in: query
+          description: Filter by dataset name
+          required: false
+          schema:
+            type: string
+          example: name eq 'FemaWebDisasterDeclarations'
+        - name: $top
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 1000
+        - name: $skip
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: $format
+          in: query
+          required: false
+          schema:
+            type: string
+            default: json
+      responses:
+        '200':
+          description: Field metadata for datasets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  OpenFemaDataSetFields:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DataSetField'
+
+  /v1/FemaWebDisasterDeclarations:
+    get:
+      operationId: getDisasterDeclarations
+      summary: Get Disaster Declarations
+      description: >-
+        Retrieve FEMA major disaster, emergency, and fire management assistance
+        declarations including incident type, declaration date, state, county,
+        and program authorizations.
+      tags:
+        - Disaster Declarations
+      parameters:
+        - name: $filter
+          in: query
+          description: >-
+            OData filter expression. Example: incidentType eq 'Fire' and
+            state eq 'CA'
+          required: false
+          schema:
+            type: string
+          example: incidentType eq 'Fire'
+        - name: $select
+          in: query
+          description: Comma-separated fields to return
+          required: false
+          schema:
+            type: string
+        - name: $top
+          in: query
+          description: Maximum records to return (max 10000)
+          required: false
+          schema:
+            type: integer
+            default: 1000
+        - name: $skip
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: $orderby
+          in: query
+          description: Field and direction to sort by
+          required: false
+          schema:
+            type: string
+          example: declarationDate desc
+        - name: $format
+          in: query
+          required: false
+          schema:
+            type: string
+            default: json
+      responses:
+        '200':
+          description: Disaster declaration records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  FemaWebDisasterDeclarations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DisasterDeclaration'
+                  metadata:
+                    $ref: '#/components/schemas/Metadata'
+
+  /v2/DisasterDeclarationsSummaries:
+    get:
+      operationId: getDisasterDeclarationsSummaries
+      summary: Get Disaster Declarations Summaries
+      description: >-
+        Retrieve summarized disaster declaration data by declaration type,
+        incident type, state, and date range. Supports full OData query syntax.
+      tags:
+        - Disaster Declarations
+      parameters:
+        - name: $filter
+          in: query
+          description: OData filter expression
+          required: false
+          schema:
+            type: string
+          example: incidentType eq 'Fire' and declarationDate ge '2020-01-01T00:00:00.000Z'
+        - name: $select
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: $top
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 1000
+        - name: $skip
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: $orderby
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: $format
+          in: query
+          required: false
+          schema:
+            type: string
+            default: json
+        - name: $count
+          in: query
+          description: Include total record count in response
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Disaster declarations summary data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  DisasterDeclarationsSummaries:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DisasterDeclarationSummary'
+                  metadata:
+                    $ref: '#/components/schemas/Metadata'
+
+components:
+  schemas:
+    DataSetList:
+      type: object
+      properties:
+        OpenFemaDataSets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSet'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+
+    DataSet:
+      type: object
+      description: An OpenFEMA dataset with metadata
+      properties:
+        name:
+          type: string
+          description: Dataset name and endpoint identifier
+        title:
+          type: string
+          description: Human-readable title
+        description:
+          type: string
+          description: Dataset description
+        version:
+          type: integer
+          description: Current dataset version number
+        endpoint:
+          type: string
+          description: API endpoint path for this dataset
+        lastDataModifiedDate:
+          type: string
+          format: date-time
+          description: Date the dataset was last updated
+        recordCount:
+          type: integer
+          description: Total number of records in the dataset
+        dataFormat:
+          type: string
+          description: Data format (JSON, CSV, etc.)
+
+    DataSetField:
+      type: object
+      description: Field metadata for an OpenFEMA dataset
+      properties:
+        dataSetName:
+          type: string
+          description: Name of the dataset this field belongs to
+        name:
+          type: string
+          description: Field name
+        title:
+          type: string
+          description: Human-readable field title
+        description:
+          type: string
+          description: Field description
+        type:
+          type: string
+          description: Data type of the field
+
+    DisasterDeclaration:
+      type: object
+      description: A FEMA disaster declaration record
+      properties:
+        disasterNumber:
+          type: integer
+          description: Unique FEMA disaster number
+        declarationType:
+          type: string
+          description: Type of declaration (DR, EM, FM)
+        declarationTitle:
+          type: string
+          description: Title of the disaster declaration
+        state:
+          type: string
+          description: State abbreviation
+        declarationDate:
+          type: string
+          format: date-time
+          description: Date of the presidential declaration
+        incidentType:
+          type: string
+          description: Type of incident (Fire, Flood, Hurricane, etc.)
+        incidentBeginDate:
+          type: string
+          format: date-time
+          description: Incident start date
+        incidentEndDate:
+          type: string
+          format: date-time
+          description: Incident end date
+        disasterCloseoutDate:
+          type: string
+          format: date-time
+          description: Date the disaster was closed out
+        fipsStateCode:
+          type: string
+          description: FIPS state code
+        fipsCountyCode:
+          type: string
+          description: FIPS county code
+        placeCode:
+          type: string
+          description: FEMA place code
+        designatedArea:
+          type: string
+          description: Designated disaster area
+
+    DisasterDeclarationSummary:
+      type: object
+      description: Summarized FEMA disaster declaration
+      properties:
+        femaDeclarationString:
+          type: string
+          description: Formatted declaration identifier string
+        disasterNumber:
+          type: integer
+          description: Unique disaster number
+        state:
+          type: string
+          description: Two-letter state abbreviation
+        declarationType:
+          type: string
+          description: Declaration type code (DR, EM, FM)
+        declarationDate:
+          type: string
+          format: date-time
+          description: Declaration date
+        incidentType:
+          type: string
+          description: Type of incident
+        declarationTitle:
+          type: string
+          description: Official declaration title
+        ihProgramDeclared:
+          type: boolean
+          description: Individual and Households Program declared
+        iaProgramDeclared:
+          type: boolean
+          description: Individual Assistance declared
+        paProgramDeclared:
+          type: boolean
+          description: Public Assistance declared
+        hmProgramDeclared:
+          type: boolean
+          description: Hazard Mitigation declared
+        incidentBeginDate:
+          type: string
+          format: date-time
+        incidentEndDate:
+          type: string
+          format: date-time
+        closeoutDate:
+          type: string
+          format: date-time
+
+    Metadata:
+      type: object
+      description: Response pagination and count metadata
+      properties:
+        skip:
+          type: integer
+          description: Records skipped
+        top:
+          type: integer
+          description: Records returned
+        count:
+          type: integer
+          description: Total matching records
+        filter:
+          type: string
+          description: Applied filter expression
+        format:
+          type: string
+          description: Response format
+        orderby:
+          type: string
+          description: Sort order applied
+        select:
+          type: string
+          description: Fields selected
+        runDate:
+          type: string
+          format: date-time
+          description: Time query was executed

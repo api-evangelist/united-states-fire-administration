@@ -1,0 +1,60 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "fema": "https://www.fema.gov/ontology/",
+    "usfa": "https://www.usfa.fema.gov/ontology/",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "DisasterDeclaration": "fema:DisasterDeclaration",
+    "FireIncident": "usfa:FireIncident",
+    "GovernmentOrganization": "GovernmentOrganization",
+
+    "disasterNumber": {
+      "@id": "fema:disasterNumber",
+      "@type": "@id"
+    },
+    "declarationType": {
+      "@id": "fema:declarationType"
+    },
+    "declarationTitle": {
+      "@id": "schema:name"
+    },
+    "state": {
+      "@id": "schema:addressRegion"
+    },
+    "declarationDate": {
+      "@id": "schema:datePublished",
+      "@type": "schema:Date"
+    },
+    "incidentType": {
+      "@id": "fema:incidentType"
+    },
+    "incidentBeginDate": {
+      "@id": "schema:startDate",
+      "@type": "schema:Date"
+    },
+    "incidentEndDate": {
+      "@id": "schema:endDate",
+      "@type": "schema:Date"
+    },
+    "fdid": {
+      "@id": "usfa:fireDepartmentId"
+    },
+    "incidentDate": {
+      "@id": "schema:dateCreated",
+      "@type": "schema:Date"
+    },
+    "propertyLoss": {
+      "@id": "schema:price",
+      "@type": "schema:MonetaryAmount"
+    },
+    "civilianDeaths": {
+      "@id": "usfa:civilianDeaths",
+      "@type": "schema:Integer"
+    },
+    "firefighterDeaths": {
+      "@id": "usfa:firefighterDeaths",
+      "@type": "schema:Integer"
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/united-states-fire-administration/main/json-schema/usfa-nfirs-incident-schema.json",
+  "title": "NFIRS Fire Incident",
+  "description": "Schema representing a National Fire Incident Reporting System (NFIRS) fire incident record from USFA's public data release",
+  "type": "object",
+  "properties": {
+    "incidentKey": {
+      "type": "string",
+      "description": "Composite key for the incident record"
+    },
+    "fdid": {
+      "type": "string",
+      "description": "Fire department identifier"
+    },
+    "state": {
+      "type": "string",
+      "description": "Two-letter state abbreviation",
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "incidentDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of the fire incident"
+    },
+    "incidentNumber": {
+      "type": "string",
+      "description": "Local incident number assigned by the fire department"
+    },
+    "exposureNumber": {
+      "type": "integer",
+      "description": "Exposure number (0 for primary, 1+ for additional exposures)"
+    },
+    "incidentType": {
+      "type": "string",
+      "description": "NFIRS incident type code"
+    },
+    "aidGiven": {
+      "type": "string",
+      "description": "Type of mutual aid given or received"
+    },
+    "alarmDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date alarm was received"
+    },
+    "alarmTime": {
+      "type": "string",
+      "description": "Time alarm was received (HHMM format)"
+    },
+    "arrivalDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date first unit arrived on scene"
+    },
+    "arrivalTime": {
+      "type": "string",
+      "description": "Time first unit arrived (HHMM)"
+    },
+    "incidentControlDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date incident was placed under control"
+    },
+    "lastUnitClearedDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date last unit cleared the scene"
+    },
+    "propertyUse": {
+      "type": "string",
+      "description": "NFIRS property use code"
+    },
+    "streetAddress": {
+      "type": "string",
+      "description": "Street address of the incident"
+    },
+    "city": {
+      "type": "string",
+      "description": "City where incident occurred"
+    },
+    "zipCode": {
+      "type": "string",
+      "description": "ZIP code of incident location"
+    },
+    "county": {
+      "type": "string",
+      "description": "County FIPS code"
+    },
+    "civilianDeaths": {
+      "type": "integer",
+      "description": "Number of civilian deaths",
+      "minimum": 0
+    },
+    "civilianInjuries": {
+      "type": "integer",
+      "description": "Number of civilian injuries",
+      "minimum": 0
+    },
+    "firefighterDeaths": {
+      "type": "integer",
+      "description": "Number of firefighter deaths",
+      "minimum": 0
+    },
+    "firefighterInjuries": {
+      "type": "integer",
+      "description": "Number of firefighter injuries",
+      "minimum": 0
+    },
+    "propertyLoss": {
+      "type": "number",
+      "description": "Estimated property loss in dollars",
+      "minimum": 0
+    },
+    "contentsLoss": {
+      "type": "number",
+      "description": "Estimated contents loss in dollars",
+      "minimum": 0
+    }
+  },
+  "required": ["fdid", "state", "incidentDate", "incidentNumber", "incidentType"]
+}

@@ -1,0 +1,47 @@
+{
+  "operationId": "listDataSets",
+  "request": {
+    "method": "GET",
+    "url": "https://www.fema.gov/api/open/v1/OpenFemaDataSets",
+    "parameters": {
+      "$top": 5,
+      "$select": "name,title,description,lastDataModifiedDate,recordCount",
+      "$format": "json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "contentType": "application/json",
+    "body": {
+      "OpenFemaDataSets": [
+        {
+          "name": "FemaWebDisasterDeclarations",
+          "title": "FEMA Web Disaster Declarations",
+          "description": "Presidential disaster declarations and emergency declarations issued by FEMA.",
+          "lastDataModifiedDate": "2026-04-28T12:00:00.000Z",
+          "recordCount": 68432
+        },
+        {
+          "name": "DisasterDeclarationsSummaries",
+          "title": "Disaster Declarations Summaries",
+          "description": "Summary-level data on presidential major disaster, emergency, and fire management assistance declarations.",
+          "lastDataModifiedDate": "2026-04-28T12:00:00.000Z",
+          "recordCount": 68432
+        },
+        {
+          "name": "FemaRegions",
+          "title": "FEMA Regions",
+          "description": "FEMA's ten regional offices and the states they cover.",
+          "lastDataModifiedDate": "2024-01-15T12:00:00.000Z",
+          "recordCount": 10
+        }
+      ],
+      "metadata": {
+        "skip": 0,
+        "top": 5,
+        "format": "json",
+        "runDate": "2026-05-03T00:00:00.000Z"
+      }
+    }
+  }
+}

@@ -1,0 +1,114 @@
+vocabulary:
+  name: United States Fire Administration Vocabulary
+  description: >-
+    Domain vocabulary for fire safety, incident reporting, emergency management,
+    and FEMA/USFA programs and data systems.
+  version: 1.0.0
+  created: '2026-05-03'
+  modified: '2026-05-03'
+
+terms:
+  - term: FEMA
+    label: Federal Emergency Management Agency
+    definition: >-
+      The federal agency within the Department of Homeland Security responsible
+      for coordinating national disaster response, recovery, and mitigation efforts.
+      USFA operates under FEMA.
+    domain: Emergency Management
+
+  - term: FDID
+    label: Fire Department Identifier
+    definition: >-
+      A unique code assigned to each fire department that reports data to NFIRS,
+      consisting of a two-digit state code and a five-character local identifier.
+    domain: Fire Data
+
+  - term: Fire Management Assistance Grant
+    label: Fire Management Assistance Grant (FMAG)
+    definition: >-
+      FEMA assistance available to states, local, and tribal governments for the
+      mitigation, management, and control of fires on publicly or privately owned
+      forests or grasslands that threaten destruction of enough improved property
+      to constitute a major disaster.
+    domain: Emergency Management
+
+  - term: HMGP
+    label: Hazard Mitigation Grant Program
+    definition: >-
+      A FEMA program that provides funding to state and local governments to
+      implement mitigation measures that reduce or eliminate long-term risk to
+      people and property from natural hazards.
+    domain: Emergency Management
+
+  - term: IA
+    label: Individual Assistance
+    definition: >-
+      FEMA disaster assistance programs that provide money or services to
+      individuals and households affected by a disaster, including housing
+      assistance, other needs assistance, and crisis counseling.
+    domain: Emergency Management
+
+  - term: NERIS
+    label: National Emergency Response Information System
+    definition: >-
+      The system replacing NFIRS beginning in 2026 for fire-based, all-hazards
+      incident reporting and analytics, providing modernized data collection and
+      reporting for the fire service.
+    domain: Fire Data
+
+  - term: NFA
+    label: National Fire Academy
+    definition: >-
+      The USFA's educational institution providing training and education for
+      fire and emergency services personnel. Located at the National Emergency
+      Training Center (NETC) in Emmitsburg, Maryland.
+    domain: Training
+
+  - term: NFDC
+    label: National Fire Data Center
+    definition: >-
+      The USFA component responsible for collecting, analyzing, and disseminating
+      national fire loss data and other fire-related statistics, including managing
+      the NFIRS program.
+    domain: Fire Data
+
+  - term: NFIRS
+    label: National Fire Incident Reporting System
+    definition: >-
+      A voluntary reporting standard that U.S. fire departments use to uniformly
+      report on the full range of their activities. The world's largest national
+      fire incident database. Being replaced by NERIS in February 2026.
+    domain: Fire Data
+
+  - term: OpenFEMA
+    label: OpenFEMA
+    definition: >-
+      FEMA's open data platform providing free, machine-readable access to
+      FEMA datasets including disaster declarations, public assistance grants,
+      and USFA fire incident data via a RESTful API at www.fema.gov/api/open.
+    domain: Data Systems
+
+  - term: PA
+    label: Public Assistance
+    definition: >-
+      FEMA's Public Assistance Grant Program provides supplemental federal
+      disaster grant assistance for debris removal, emergency protective measures,
+      and the restoration of disaster-damaged public and nonprofit facilities.
+    domain: Emergency Management
+
+  - term: Property Use Code
+    label: NFIRS Property Use Code
+    definition: >-
+      A standardized code in NFIRS that classifies the type of property where
+      a fire incident occurred (e.g., residential, commercial, industrial,
+      outdoor/wildland).
+    domain: Fire Data
+
+  - term: USFA
+    label: United States Fire Administration
+    definition: >-
+      A federal agency within FEMA responsible for fire prevention, fire safety
+      programs, training for the fire service, and maintaining the National Fire
+      Incident Reporting System. Mission: to provide leadership, coordination, and
+      support for the nation's fire protection and emergency medical services.
+    domain: Agency

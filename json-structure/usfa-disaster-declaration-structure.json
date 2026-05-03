@@ -1,0 +1,17 @@
+{
+  "name": "FEMA Disaster Declaration",
+  "description": "Data structure for a FEMA disaster declaration record from OpenFEMA",
+  "fields": [
+    {"name": "disasterNumber", "type": "integer", "description": "Unique FEMA disaster number", "required": true},
+    {"name": "declarationType", "type": "string", "description": "DR, EM, or FM declaration type", "required": true},
+    {"name": "declarationTitle", "type": "string", "description": "Official declaration title"},
+    {"name": "state", "type": "string", "description": "Two-letter state abbreviation", "required": true},
+    {"name": "declarationDate", "type": "datetime", "description": "Presidential declaration date", "required": true},
+    {"name": "incidentType", "type": "string", "description": "Primary incident type (Fire, Flood, etc.)", "required": true},
+    {"name": "incidentBeginDate", "type": "datetime", "description": "Incident start date"},
+    {"name": "incidentEndDate", "type": "datetime", "description": "Incident end date"},
+    {"name": "fipsStateCode", "type": "string", "description": "FIPS state code"},
+    {"name": "fipsCountyCode", "type": "string", "description": "FIPS county code"},
+    {"name": "designatedArea", "type": "string", "description": "Designated disaster area"}
+  ]
+}
