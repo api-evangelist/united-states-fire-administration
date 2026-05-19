@@ -1,0 +1,176 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenFEMA Fire Data API — Disaster Declarations
+  description: 'OpenFEMA Fire Data API — Disaster Declarations. 2 operations. Lead operation: Get Disaster Declarations. Self-contained
+    Naftiko capability covering one United States Fire Administration business surface.'
+  tags:
+  - United States Fire Administration
+  - Disaster Declarations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    UNITED_STATES_FIRE_ADMINISTRATION_API_KEY: UNITED_STATES_FIRE_ADMINISTRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openfema-fire-data-disaster-declarations
+    baseUri: https://www.fema.gov/api/open
+    description: OpenFEMA Fire Data API — Disaster Declarations business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-FemaWebDisasterDeclarations
+      path: /v1/FemaWebDisasterDeclarations
+      operations:
+      - name: getdisasterdeclarations
+        method: GET
+        description: Get Disaster Declarations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: $filter
+          in: query
+          type: string
+          description: 'OData filter expression. Example: incidentType eq ''Fire'' and state eq ''CA'''
+        - name: $select
+          in: query
+          type: string
+          description: Comma-separated fields to return
+        - name: $top
+          in: query
+          type: integer
+          description: Maximum records to return (max 10000)
+        - name: $skip
+          in: query
+          type: integer
+        - name: $orderby
+          in: query
+          type: string
+          description: Field and direction to sort by
+        - name: $format
+          in: query
+          type: string
+    - name: v2-DisasterDeclarationsSummaries
+      path: /v2/DisasterDeclarationsSummaries
+      operations:
+      - name: getdisasterdeclarationssummaries
+        method: GET
+        description: Get Disaster Declarations Summaries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: $filter
+          in: query
+          type: string
+          description: OData filter expression
+        - name: $select
+          in: query
+          type: string
+        - name: $top
+          in: query
+          type: integer
+        - name: $skip
+          in: query
+          type: integer
+        - name: $orderby
+          in: query
+          type: string
+        - name: $format
+          in: query
+          type: string
+        - name: $count
+          in: query
+          type: boolean
+          description: Include total record count in response
+  exposes:
+  - type: rest
+    namespace: openfema-fire-data-disaster-declarations-rest
+    port: 8080
+    description: REST adapter for OpenFEMA Fire Data API — Disaster Declarations. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/femawebdisasterdeclarations
+      name: v1-femawebdisasterdeclarations
+      description: REST surface for v1-FemaWebDisasterDeclarations.
+      operations:
+      - method: GET
+        name: getdisasterdeclarations
+        description: Get Disaster Declarations
+        call: openfema-fire-data-disaster-declarations.getdisasterdeclarations
+        with:
+          $filter: rest.$filter
+          $select: rest.$select
+          $top: rest.$top
+          $skip: rest.$skip
+          $orderby: rest.$orderby
+          $format: rest.$format
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/disasterdeclarationssummaries
+      name: v2-disasterdeclarationssummaries
+      description: REST surface for v2-DisasterDeclarationsSummaries.
+      operations:
+      - method: GET
+        name: getdisasterdeclarationssummaries
+        description: Get Disaster Declarations Summaries
+        call: openfema-fire-data-disaster-declarations.getdisasterdeclarationssummaries
+        with:
+          $filter: rest.$filter
+          $select: rest.$select
+          $top: rest.$top
+          $skip: rest.$skip
+          $orderby: rest.$orderby
+          $format: rest.$format
+          $count: rest.$count
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openfema-fire-data-disaster-declarations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenFEMA Fire Data API — Disaster Declarations. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-disaster-declarations
+      description: Get Disaster Declarations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfema-fire-data-disaster-declarations.getdisasterdeclarations
+      with:
+        $filter: tools.$filter
+        $select: tools.$select
+        $top: tools.$top
+        $skip: tools.$skip
+        $orderby: tools.$orderby
+        $format: tools.$format
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-disaster-declarations-summaries
+      description: Get Disaster Declarations Summaries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfema-fire-data-disaster-declarations.getdisasterdeclarationssummaries
+      with:
+        $filter: tools.$filter
+        $select: tools.$select
+        $top: tools.$top
+        $skip: tools.$skip
+        $orderby: tools.$orderby
+        $format: tools.$format
+        $count: tools.$count
+      outputParameters:
+      - type: object
+        mapping: $.
