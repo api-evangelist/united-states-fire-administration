@@ -1,5 +1,8 @@
 aid: united-states-fire-administration
 url: https://raw.githubusercontent.com/api-evangelist/united-states-fire-administration/refs/heads/main/apis.yml
+common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/usfire
 apis:
 - aid: united-states-fire-administration:openfema-fire-data-api
   name: OpenFEMA Fire Data API
