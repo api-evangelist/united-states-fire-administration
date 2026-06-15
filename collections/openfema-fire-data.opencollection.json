@@ -1,0 +1,200 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenFEMA Fire Data API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Available Data Sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v1/OpenFemaDataSets",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression (e.g. name eq 'FemaWebDisasterDeclarations')"
+              },
+              {
+                "name": "$select",
+                "value": "name,description,lastDataModifiedDate",
+                "type": "query",
+                "description": "Comma-separated list of fields to return"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (default 1000, max 10000)"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination"
+              },
+              {
+                "name": "$format",
+                "value": "",
+                "type": "query",
+                "description": "Response format"
+              }
+            ]
+          },
+          "docs": "Retrieve metadata about all available OpenFEMA datasets including names, descriptions, endpoints, data dictionaries, and last update times."
+        },
+        {
+          "info": {
+            "name": "List Data Set Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v1/OpenFemaDataSetFields",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "name eq 'FemaWebDisasterDeclarations'",
+                "type": "query",
+                "description": "Filter by dataset name"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve field-level metadata for OpenFEMA datasets including field names, data types, descriptions, and associated dataset."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Disaster Declarations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Disaster Declarations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v1/FemaWebDisasterDeclarations",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "incidentType eq 'Fire'",
+                "type": "query",
+                "description": "OData filter expression. Example: incidentType eq 'Fire' and state eq 'CA'"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated fields to return"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum records to return (max 10000)"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$orderby",
+                "value": "declarationDate desc",
+                "type": "query",
+                "description": "Field and direction to sort by"
+              },
+              {
+                "name": "$format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve FEMA major disaster, emergency, and fire management assistance declarations including incident type, declaration date, state, county, and program authorizations."
+        },
+        {
+          "info": {
+            "name": "Get Disaster Declarations Summaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "incidentType eq 'Fire' and declarationDate ge '2020-01-01T00:00:00.000Z'",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "Include total record count in response"
+              }
+            ]
+          },
+          "docs": "Retrieve summarized disaster declaration data by declaration type, incident type, state, and date range. Supports full OData query syntax."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

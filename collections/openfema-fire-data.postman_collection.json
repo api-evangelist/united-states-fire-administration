@@ -1,0 +1,559 @@
+{
+  "item": [
+    {
+      "id": "773667e2-8005-4cf4-9efa-5bdb1a255f3b",
+      "name": "Fire Data",
+      "description": {
+        "content": "USFA fire incident and reporting data",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "14c038b0-6ed2-4747-be24-28ffec12bb58",
+      "name": "Datasets",
+      "description": {
+        "content": "OpenFEMA dataset metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "537c163f-c7fe-4a4f-9dca-ac8ef2049c07",
+          "name": "List Available Data Sets",
+          "request": {
+            "name": "List Available Data Sets",
+            "description": {
+              "content": "Retrieve metadata about all available OpenFEMA datasets including names, descriptions, endpoints, data dictionaries, and last update times.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "OpenFemaDataSets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression (e.g. name eq 'FemaWebDisasterDeclarations')"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000",
+                  "description": "Maximum number of records to return (default 1000, max 10000)"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json",
+                  "description": "Response format"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a7ff8f0-aa73-476d-a2c8-bb7bba584902",
+              "name": "List of available OpenFEMA datasets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "OpenFemaDataSets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "name,description,lastDataModifiedDate"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"OpenFemaDataSets\": [\n    {\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"version\": 9281,\n      \"endpoint\": \"string\",\n      \"lastDataModifiedDate\": \"1988-10-08T12:26:53.767Z\",\n      \"recordCount\": 4291,\n      \"dataFormat\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"version\": 1053,\n      \"endpoint\": \"string\",\n      \"lastDataModifiedDate\": \"2025-08-20T13:38:22.545Z\",\n      \"recordCount\": 7835,\n      \"dataFormat\": \"string\"\n    }\n  ],\n  \"metadata\": {\n    \"skip\": 1613,\n    \"top\": 2308,\n    \"count\": 8403,\n    \"filter\": \"string\",\n    \"format\": \"string\",\n    \"orderby\": \"string\",\n    \"select\": \"string\",\n    \"runDate\": \"2002-11-27T01:36:46.907Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1c3b38a-38d3-4e53-b1b8-4f476b31f220",
+          "name": "List Data Set Fields",
+          "request": {
+            "name": "List Data Set Fields",
+            "description": {
+              "content": "Retrieve field-level metadata for OpenFEMA datasets including field names, data types, descriptions, and associated dataset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "OpenFemaDataSetFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Filter by dataset name"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2017fe7-7f01-4d59-b319-fa36f397e715",
+              "name": "Field metadata for datasets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "OpenFemaDataSetFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "name eq 'FemaWebDisasterDeclarations'"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"OpenFemaDataSetFields\": [\n    {\n      \"dataSetName\": \"string\",\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"dataSetName\": \"string\",\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8feecb40-9778-417f-b63b-185cc6b127e4",
+      "name": "Disaster Declarations",
+      "description": {
+        "content": "FEMA disaster declaration data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "21f42f5e-e153-45d3-813f-94d7e44b3564",
+          "name": "Get Disaster Declarations",
+          "request": {
+            "name": "Get Disaster Declarations",
+            "description": {
+              "content": "Retrieve FEMA major disaster, emergency, and fire management assistance declarations including incident type, declaration date, state, county, and program authorizations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "FemaWebDisasterDeclarations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression. Example: incidentType eq 'Fire' and state eq 'CA'"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated fields to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000",
+                  "description": "Maximum records to return (max 10000)"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Field and direction to sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc3b7fcc-a305-4678-9e28-21ac8f02806b",
+              "name": "Disaster declaration records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "FemaWebDisasterDeclarations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "incidentType eq 'Fire'"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "declarationDate desc"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"FemaWebDisasterDeclarations\": [\n    {\n      \"disasterNumber\": 899,\n      \"declarationType\": \"string\",\n      \"declarationTitle\": \"string\",\n      \"state\": \"string\",\n      \"declarationDate\": \"2012-08-13T05:45:16.042Z\",\n      \"incidentType\": \"string\",\n      \"incidentBeginDate\": \"2004-05-29T01:15:23.940Z\",\n      \"incidentEndDate\": \"2019-04-06T20:10:41.267Z\",\n      \"disasterCloseoutDate\": \"1996-08-29T09:57:45.785Z\",\n      \"fipsStateCode\": \"string\",\n      \"fipsCountyCode\": \"string\",\n      \"placeCode\": \"string\",\n      \"designatedArea\": \"string\"\n    },\n    {\n      \"disasterNumber\": 3204,\n      \"declarationType\": \"string\",\n      \"declarationTitle\": \"string\",\n      \"state\": \"string\",\n      \"declarationDate\": \"2025-09-08T11:38:51.975Z\",\n      \"incidentType\": \"string\",\n      \"incidentBeginDate\": \"1989-02-15T23:46:03.615Z\",\n      \"incidentEndDate\": \"1991-08-17T11:58:13.371Z\",\n      \"disasterCloseoutDate\": \"1977-07-17T02:13:49.043Z\",\n      \"fipsStateCode\": \"string\",\n      \"fipsCountyCode\": \"string\",\n      \"placeCode\": \"string\",\n      \"designatedArea\": \"string\"\n    }\n  ],\n  \"metadata\": {\n    \"skip\": 3846,\n    \"top\": 6795,\n    \"count\": 3902,\n    \"filter\": \"string\",\n    \"format\": \"string\",\n    \"orderby\": \"string\",\n    \"select\": \"string\",\n    \"runDate\": \"1994-05-14T16:23:49.258Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ae327d0-ca14-4425-8422-0cec519c733a",
+          "name": "Get Disaster Declarations Summaries",
+          "request": {
+            "name": "Get Disaster Declarations Summaries",
+            "description": {
+              "content": "Retrieve summarized disaster declaration data by declaration type, incident type, state, and date range. Supports full OData query syntax.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "DisasterDeclarationsSummaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json"
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "<boolean>",
+                  "description": "Include total record count in response"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80ad3309-5020-4e9f-9143-2e631e516646",
+              "name": "Disaster declarations summary data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "DisasterDeclarationsSummaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "incidentType eq 'Fire' and declarationDate ge '2020-01-01T00:00:00.000Z'"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"DisasterDeclarationsSummaries\": [\n    {\n      \"femaDeclarationString\": \"string\",\n      \"disasterNumber\": 6816,\n      \"state\": \"string\",\n      \"declarationType\": \"string\",\n      \"declarationDate\": \"1997-06-21T06:54:10.963Z\",\n      \"incidentType\": \"string\",\n      \"declarationTitle\": \"string\",\n      \"ihProgramDeclared\": true,\n      \"iaProgramDeclared\": false,\n      \"paProgramDeclared\": true,\n      \"hmProgramDeclared\": false,\n      \"incidentBeginDate\": \"2005-12-29T23:09:43.524Z\",\n      \"incidentEndDate\": \"1948-05-06T05:36:58.915Z\",\n      \"closeoutDate\": \"2020-11-05T08:30:19.632Z\"\n    },\n    {\n      \"femaDeclarationString\": \"string\",\n      \"disasterNumber\": 1643,\n      \"state\": \"string\",\n      \"declarationType\": \"string\",\n      \"declarationDate\": \"1955-09-18T22:55:18.770Z\",\n      \"incidentType\": \"string\",\n      \"declarationTitle\": \"string\",\n      \"ihProgramDeclared\": false,\n      \"iaProgramDeclared\": true,\n      \"paProgramDeclared\": false,\n      \"hmProgramDeclared\": true,\n      \"incidentBeginDate\": \"1954-10-19T20:07:28.972Z\",\n      \"incidentEndDate\": \"1985-04-07T00:37:18.460Z\",\n      \"closeoutDate\": \"2013-03-05T16:00:14.067Z\"\n    }\n  ],\n  \"metadata\": {\n    \"skip\": 2633,\n    \"top\": 6497,\n    \"count\": 9307,\n    \"filter\": \"string\",\n    \"format\": \"string\",\n    \"orderby\": \"string\",\n    \"select\": \"string\",\n    \"runDate\": \"1995-09-01T05:12:28.539Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.fema.gov/api/open",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "19d4cf7c-e3b5-4087-a079-85345d748f22",
+    "name": "OpenFEMA Fire Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OpenFEMA API provides free, read-only access to FEMA and USFA datasets including National Fire Incident Reporting System (NFIRS) annual public data, disaster declarations, FEMA public assistance grants, and other emergency management datasets. No API key is required. The RESTful interface uses query string parameters for filtering, sorting, pagination, and field selection. Base path for all endpoints is https://www.fema.gov/api/open.\n\nContact Support:\n Name: OpenFEMA\n Email: openfema@fema.dhs.gov",
+      "type": "text/plain"
+    }
+  }
+}
