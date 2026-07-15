@@ -1,6 +1,8 @@
 aid: united-states-fire-administration
 url: https://raw.githubusercontent.com/api-evangelist/united-states-fire-administration/refs/heads/main/apis.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/united-states-fire-administration-agentic-access.yml
   - type: DomainSecurity
     url: security/united-states-fire-administration-domain-security.yml
   - type: LinkedIn
