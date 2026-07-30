@@ -8,34 +8,45 @@ common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/usfire
 apis:
-  - aid: united-states-fire-administration:openfema-fire-data-api
-    name: OpenFEMA Fire Data API
-    tags:
-      - Fire Safety
-      - Incident Reporting
-      - Emergency Management
-      - NFIRS
-      - Federal Government
-    humanURL: https://www.fema.gov/about/openfema/api
-    baseURL: https://www.fema.gov/api/open
-    properties:
-      - url: https://www.fema.gov/about/openfema/api
-        type: Documentation
-      - url: https://www.fema.gov/about/openfema/developer-resources
-        type: Portal
-      - url: https://www.fema.gov/about/openfema/data-sets
-        type: DataSets
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/united-states-fire-administration/refs/heads/main/openapi/openfema-fire-data-openapi.yml
-        type: OpenAPI
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/united-states-fire-administration/refs/heads/main/rules/openfema-fire-data-rules.yml
-        type: SpectralRules
-    description: >-
-      The OpenFEMA API provides free, read-only REST access to FEMA and USFA datasets including the National Fire
-      Incident Reporting System (NFIRS) annual public data, disaster declarations, and other emergency management data.
-      No API key is required. The API supports filtering, sorting, pagination, and field selection for all available
-      datasets.
+- aid: united-states-fire-administration:united-states-fire-administration-datasets-api
+  name: United States Fire Administration Datasets API
+  description: OpenFEMA dataset metadata
+  humanURL: https://www.fema.gov/about/openfema/api
+  baseURL: https://www.fema.gov/api/open
+  tags:
+  - Datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/united-states-fire-administration-datasets-api-openapi.yml
+  - type: Documentation
+    url: https://www.fema.gov/about/openfema/api
+  - type: Portal
+    url: https://www.fema.gov/about/openfema/developer-resources
+  - type: DataSets
+    url: https://www.fema.gov/about/openfema/data-sets
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/united-states-fire-administration/refs/heads/main/rules/openfema-fire-data-rules.yml
+- aid: >-
+    united-states-fire-administration:united-states-fire-administration-disaster-declarations-api
+  name: United States Fire Administration Disaster Declarations API
+  description: FEMA disaster declaration data
+  humanURL: https://www.fema.gov/about/openfema/api
+  baseURL: https://www.fema.gov/api/open
+  tags:
+  - Disaster Declarations
+  properties:
+  - type: OpenAPI
+    url: openapi/united-states-fire-administration-disaster-declarations-api-openapi.yml
+  - type: Documentation
+    url: https://www.fema.gov/about/openfema/api
+  - type: Portal
+    url: https://www.fema.gov/about/openfema/developer-resources
+  - type: DataSets
+    url: https://www.fema.gov/about/openfema/data-sets
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/united-states-fire-administration/refs/heads/main/rules/openfema-fire-data-rules.yml
 name: United States Fire Administration
 tags:
   - Federal Government
@@ -44,7 +55,19 @@ tags:
   - Public Safety
   - FEMA
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/united-states-fire-administration.png
 access: 3rd-Party
 created: '2024-12-03'
 modified: '2026-05-19'
