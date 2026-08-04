@@ -1,0 +1,16 @@
+{
+  "provider": "united-states-fire-administration",
+  "sources": [
+    "united-states-fire-administration-datasets-api-openapi.yml",
+    "united-states-fire-administration-disaster-declarations-api-openapi.yml"
+  ],
+  "outputs": [
+    "united-states-fire-administration-datasets-api-openapi.yml",
+    "united-states-fire-administration-disaster-declarations-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
