@@ -1,0 +1,267 @@
+{
+  "item": [
+    {
+      "id": "5b81c05f-1dc7-42ca-b7ab-c93b69c7e4a5",
+      "name": "Datasets",
+      "description": {
+        "content": "OpenFEMA dataset metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c1cc9796-cc98-4c8e-b8b3-9b51a43af024",
+          "name": "List Available Data Sets",
+          "request": {
+            "name": "List Available Data Sets",
+            "description": {
+              "content": "Retrieve metadata about all available OpenFEMA datasets including names, descriptions, endpoints, data dictionaries, and last update times.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "OpenFemaDataSets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression (e.g. name eq 'FemaWebDisasterDeclarations')"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000",
+                  "description": "Maximum number of records to return (default 1000, max 10000)"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json",
+                  "description": "Response format"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55149917-035a-4c9f-989b-b1e6d62806bb",
+              "name": "List of available OpenFEMA datasets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "OpenFemaDataSets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "name,description,lastDataModifiedDate"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"OpenFemaDataSets\": [\n    {\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"version\": 5245,\n      \"endpoint\": \"string\",\n      \"lastDataModifiedDate\": \"1987-04-19T18:43:59.907Z\",\n      \"recordCount\": 5743,\n      \"dataFormat\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"version\": 2201,\n      \"endpoint\": \"string\",\n      \"lastDataModifiedDate\": \"1958-10-23T20:19:17.964Z\",\n      \"recordCount\": 8378,\n      \"dataFormat\": \"string\"\n    }\n  ],\n  \"metadata\": {\n    \"skip\": 48,\n    \"top\": 1260,\n    \"count\": 3408,\n    \"filter\": \"string\",\n    \"format\": \"string\",\n    \"orderby\": \"string\",\n    \"select\": \"string\",\n    \"runDate\": \"1950-07-08T21:45:15.058Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04a6e31a-8d3d-4a76-add3-0c9b48293d89",
+          "name": "List Data Set Fields",
+          "request": {
+            "name": "List Data Set Fields",
+            "description": {
+              "content": "Retrieve field-level metadata for OpenFEMA datasets including field names, data types, descriptions, and associated dataset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "OpenFemaDataSetFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Filter by dataset name"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90c6ca99-8c5e-410f-868b-a941849e7324",
+              "name": "Field metadata for datasets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "OpenFemaDataSetFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "name eq 'FemaWebDisasterDeclarations'"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"OpenFemaDataSetFields\": [\n    {\n      \"dataSetName\": \"string\",\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"dataSetName\": \"string\",\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.fema.gov/api/open",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5d35e717-8e6c-48c0-8b48-f740264bb176",
+    "name": "OpenFEMA Fire Data Datasets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The OpenFEMA API provides free, read-only access to FEMA and USFA datasets including National Fire Incident Reporting System (NFIRS) annual public data, disaster declarations, FEMA public assistance grants, and other emergency management datasets. No API key is required. The RESTful interface uses query string parameters for filtering, sorting, pagination, and field selection. Base path for all endpoints is https://www.fema.gov/api/open.\n\nContact Support:\n Name: OpenFEMA\n Email: openfema@fema.dhs.gov",
+      "type": "text/plain"
+    }
+  }
+}

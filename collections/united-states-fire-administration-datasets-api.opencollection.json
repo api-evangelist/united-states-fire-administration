@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenFEMA Fire Data Datasets API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Available Data Sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v1/OpenFemaDataSets",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression (e.g. name eq 'FemaWebDisasterDeclarations')"
+              },
+              {
+                "name": "$select",
+                "value": "name,description,lastDataModifiedDate",
+                "type": "query",
+                "description": "Comma-separated list of fields to return"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (default 1000, max 10000)"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination"
+              },
+              {
+                "name": "$format",
+                "value": "",
+                "type": "query",
+                "description": "Response format"
+              }
+            ]
+          },
+          "docs": "Retrieve metadata about all available OpenFEMA datasets including names, descriptions, endpoints, data dictionaries, and last update times."
+        },
+        {
+          "info": {
+            "name": "List Data Set Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v1/OpenFemaDataSetFields",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "name eq 'FemaWebDisasterDeclarations'",
+                "type": "query",
+                "description": "Filter by dataset name"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "$format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve field-level metadata for OpenFEMA datasets including field names, data types, descriptions, and associated dataset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
