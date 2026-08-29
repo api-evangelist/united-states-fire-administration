@@ -1,6 +1,9 @@
 aid: united-states-fire-administration
 url: https://raw.githubusercontent.com/api-evangelist/united-states-fire-administration/refs/heads/main/apis.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/united-states-fire-administration-capability-edges.yml
+    name: United States Fire Administration Business Capability Map
   - type: AgenticAccess
     url: agentic-access/united-states-fire-administration-agentic-access.yml
   - type: DomainSecurity

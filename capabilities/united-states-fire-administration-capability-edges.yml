@@ -1,0 +1,26 @@
+slug: united-states-fire-administration
+provider: United States Fire Administration
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Public Sector & Government
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Disaster Declarations
+  spec_file: united-states-fire-administration-disaster-declarations-api-openapi.yml
+  capability_id: BC-3310.50
+  capability_id_l1: BC-3310
+  capability_name: Disaster Response and Recovery
+  confidence: 0.75
+  evidence: operations "Get Disaster Declarations" and "Get Disaster Declarations Summaries"; schemas
+    DisasterDeclaration, DisasterDeclarationSummary
+  reason: The operations serve federal disaster declaration records, which is the artefact of the disaster
+    declaration/response and recovery capability. Confidence held below 0.9 because the API only reads
+    and publishes declaration data rather than executing the declaration or recovery process.
