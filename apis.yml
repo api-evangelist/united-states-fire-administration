@@ -91,7 +91,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/united-sta
 access: 3rd-Party
 created: '2024-12-03'
 modified: '2026-05-19'
-position: Consumer
+position: Consuming
 description: >-
   The United States Fire Administration (USFA) is a government agency under the Federal Emergency Management Agency
   (FEMA) that is responsible for providing leadership and support to fire departments across the country. The USFA works
