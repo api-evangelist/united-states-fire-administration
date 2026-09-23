@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: OpenFEMA Fire Data Datasets API
   description: The OpenFEMA API provides free, read-only access to FEMA and USFA datasets including National Fire Incident Reporting System (NFIRS) annual public data, disaster declarations, FEMA public assistance grants, and other emergency management datasets. No API key is required. The RESTful interface uses query string parameters for filtering, sorting, pagination, and field selection. Base path for all endpoints is https://www.fema.gov/api/open.
@@ -117,35 +117,34 @@ paths:
                       $ref: '#/components/schemas/DataSetField'
 components:
   schemas:
-    DataSet:
+    DataSetList:
       type: object
-      description: An OpenFEMA dataset with metadata
       properties:
+        OpenFemaDataSets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSet'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+    DataSetField:
+      type: object
+      description: Field metadata for an OpenFEMA dataset
+      properties:
+        dataSetName:
+          type: string
+          description: Name of the dataset this field belongs to
         name:
           type: string
-          description: Dataset name and endpoint identifier
+          description: Field name
         title:
           type: string
-          description: Human-readable title
+          description: Human-readable field title
         description:
           type: string
-          description: Dataset description
-        version:
-          type: integer
-          description: Current dataset version number
-        endpoint:
+          description: Field description
+        type:
           type: string
-          description: API endpoint path for this dataset
-        lastDataModifiedDate:
-          type: string
-          format: date-time
-          description: Date the dataset was last updated
-        recordCount:
-          type: integer
-          description: Total number of records in the dataset
-        dataFormat:
-          type: string
-          description: Data format (JSON, CSV, etc.)
+          description: Data type of the field
     Metadata:
       type: object
       description: Response pagination and count metadata
@@ -175,31 +174,32 @@ components:
           type: string
           format: date-time
           description: Time query was executed
-    DataSetList:
+    DataSet:
       type: object
+      description: An OpenFEMA dataset with metadata
       properties:
-        OpenFemaDataSets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataSet'
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-    DataSetField:
-      type: object
-      description: Field metadata for an OpenFEMA dataset
-      properties:
-        dataSetName:
-          type: string
-          description: Name of the dataset this field belongs to
         name:
           type: string
-          description: Field name
+          description: Dataset name and endpoint identifier
         title:
           type: string
-          description: Human-readable field title
+          description: Human-readable title
         description:
           type: string
-          description: Field description
-        type:
+          description: Dataset description
+        version:
+          type: integer
+          description: Current dataset version number
+        endpoint:
           type: string
-          description: Data type of the field
+          description: API endpoint path for this dataset
+        lastDataModifiedDate:
+          type: string
+          format: date-time
+          description: Date the dataset was last updated
+        recordCount:
+          type: integer
+          description: Total number of records in the dataset
+        dataFormat:
+          type: string
+          description: Data format (JSON, CSV, etc.)

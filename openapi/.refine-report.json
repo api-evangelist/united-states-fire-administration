@@ -1,8 +1,7 @@
 {
   "provider": "united-states-fire-administration",
   "sources": [
-    "united-states-fire-administration-datasets-api-openapi.yml",
-    "united-states-fire-administration-disaster-declarations-api-openapi.yml"
+    "_original/openfema-fire-data-openapi.yml"
   ],
   "outputs": [
     "united-states-fire-administration-datasets-api-openapi.yml",
@@ -11,6 +10,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openfema-fire-data-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "united-states-fire-administration-datasets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "united-states-fire-administration-disaster-declarations-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
