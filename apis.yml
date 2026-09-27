@@ -52,7 +52,7 @@ apis:
       https://raw.githubusercontent.com/api-evangelist/united-states-fire-administration/refs/heads/main/rules/openfema-fire-data-rules.yml
 name: United States Fire Administration
 tags:
-  - Federal-Government
+  - Federal Government
   - Fire Safety
   - Emergency Management
   - Public Safety
@@ -63,6 +63,7 @@ tags_raw:
   - Emergency Management
   - Public Safety
   - FEMA
+  - Federal-Government
 type: Index
 deliveryModel:
   model: unknown

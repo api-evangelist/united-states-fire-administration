@@ -143,82 +143,6 @@ paths:
                     $ref: '#/components/schemas/Metadata'
 components:
   schemas:
-    Metadata:
-      type: object
-      description: Response pagination and count metadata
-      properties:
-        skip:
-          type: integer
-          description: Records skipped
-        top:
-          type: integer
-          description: Records returned
-        count:
-          type: integer
-          description: Total matching records
-        filter:
-          type: string
-          description: Applied filter expression
-        format:
-          type: string
-          description: Response format
-        orderby:
-          type: string
-          description: Sort order applied
-        select:
-          type: string
-          description: Fields selected
-        runDate:
-          type: string
-          format: date-time
-          description: Time query was executed
-    DisasterDeclaration:
-      type: object
-      description: A FEMA disaster declaration record
-      properties:
-        disasterNumber:
-          type: integer
-          description: Unique FEMA disaster number
-        declarationType:
-          type: string
-          description: Type of declaration (DR, EM, FM)
-        declarationTitle:
-          type: string
-          description: Title of the disaster declaration
-        state:
-          type: string
-          description: State abbreviation
-        declarationDate:
-          type: string
-          format: date-time
-          description: Date of the presidential declaration
-        incidentType:
-          type: string
-          description: Type of incident (Fire, Flood, Hurricane, etc.)
-        incidentBeginDate:
-          type: string
-          format: date-time
-          description: Incident start date
-        incidentEndDate:
-          type: string
-          format: date-time
-          description: Incident end date
-        disasterCloseoutDate:
-          type: string
-          format: date-time
-          description: Date the disaster was closed out
-        fipsStateCode:
-          type: string
-          description: FIPS state code
-        fipsCountyCode:
-          type: string
-          description: FIPS county code
-        placeCode:
-          type: string
-          description: FEMA place code
-        designatedArea:
-          type: string
-          description: Designated disaster area
     DisasterDeclarationSummary:
       type: object
       description: Summarized FEMA disaster declaration
@@ -266,3 +190,79 @@ components:
         closeoutDate:
           type: string
           format: date-time
+    DisasterDeclaration:
+      type: object
+      description: A FEMA disaster declaration record
+      properties:
+        disasterNumber:
+          type: integer
+          description: Unique FEMA disaster number
+        declarationType:
+          type: string
+          description: Type of declaration (DR, EM, FM)
+        declarationTitle:
+          type: string
+          description: Title of the disaster declaration
+        state:
+          type: string
+          description: State abbreviation
+        declarationDate:
+          type: string
+          format: date-time
+          description: Date of the presidential declaration
+        incidentType:
+          type: string
+          description: Type of incident (Fire, Flood, Hurricane, etc.)
+        incidentBeginDate:
+          type: string
+          format: date-time
+          description: Incident start date
+        incidentEndDate:
+          type: string
+          format: date-time
+          description: Incident end date
+        disasterCloseoutDate:
+          type: string
+          format: date-time
+          description: Date the disaster was closed out
+        fipsStateCode:
+          type: string
+          description: FIPS state code
+        fipsCountyCode:
+          type: string
+          description: FIPS county code
+        placeCode:
+          type: string
+          description: FEMA place code
+        designatedArea:
+          type: string
+          description: Designated disaster area
+    Metadata:
+      type: object
+      description: Response pagination and count metadata
+      properties:
+        skip:
+          type: integer
+          description: Records skipped
+        top:
+          type: integer
+          description: Records returned
+        count:
+          type: integer
+          description: Total matching records
+        filter:
+          type: string
+          description: Applied filter expression
+        format:
+          type: string
+          description: Response format
+        orderby:
+          type: string
+          description: Sort order applied
+        select:
+          type: string
+          description: Fields selected
+        runDate:
+          type: string
+          format: date-time
+          description: Time query was executed

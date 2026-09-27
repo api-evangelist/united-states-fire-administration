@@ -117,34 +117,6 @@ paths:
                       $ref: '#/components/schemas/DataSetField'
 components:
   schemas:
-    DataSetList:
-      type: object
-      properties:
-        OpenFemaDataSets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataSet'
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-    DataSetField:
-      type: object
-      description: Field metadata for an OpenFEMA dataset
-      properties:
-        dataSetName:
-          type: string
-          description: Name of the dataset this field belongs to
-        name:
-          type: string
-          description: Field name
-        title:
-          type: string
-          description: Human-readable field title
-        description:
-          type: string
-          description: Field description
-        type:
-          type: string
-          description: Data type of the field
     Metadata:
       type: object
       description: Response pagination and count metadata
@@ -174,6 +146,34 @@ components:
           type: string
           format: date-time
           description: Time query was executed
+    DataSetField:
+      type: object
+      description: Field metadata for an OpenFEMA dataset
+      properties:
+        dataSetName:
+          type: string
+          description: Name of the dataset this field belongs to
+        name:
+          type: string
+          description: Field name
+        title:
+          type: string
+          description: Human-readable field title
+        description:
+          type: string
+          description: Field description
+        type:
+          type: string
+          description: Data type of the field
+    DataSetList:
+      type: object
+      properties:
+        OpenFemaDataSets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSet'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
     DataSet:
       type: object
       description: An OpenFEMA dataset with metadata
