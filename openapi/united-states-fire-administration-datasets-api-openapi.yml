@@ -117,6 +117,15 @@ paths:
                       $ref: '#/components/schemas/DataSetField'
 components:
   schemas:
+    DataSetList:
+      type: object
+      properties:
+        OpenFemaDataSets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSet'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
     Metadata:
       type: object
       description: Response pagination and count metadata
@@ -165,15 +174,6 @@ components:
         type:
           type: string
           description: Data type of the field
-    DataSetList:
-      type: object
-      properties:
-        OpenFemaDataSets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataSet'
-        metadata:
-          $ref: '#/components/schemas/Metadata'
     DataSet:
       type: object
       description: An OpenFEMA dataset with metadata

@@ -190,6 +190,35 @@ components:
         closeoutDate:
           type: string
           format: date-time
+    Metadata:
+      type: object
+      description: Response pagination and count metadata
+      properties:
+        skip:
+          type: integer
+          description: Records skipped
+        top:
+          type: integer
+          description: Records returned
+        count:
+          type: integer
+          description: Total matching records
+        filter:
+          type: string
+          description: Applied filter expression
+        format:
+          type: string
+          description: Response format
+        orderby:
+          type: string
+          description: Sort order applied
+        select:
+          type: string
+          description: Fields selected
+        runDate:
+          type: string
+          format: date-time
+          description: Time query was executed
     DisasterDeclaration:
       type: object
       description: A FEMA disaster declaration record
@@ -237,32 +266,3 @@ components:
         designatedArea:
           type: string
           description: Designated disaster area
-    Metadata:
-      type: object
-      description: Response pagination and count metadata
-      properties:
-        skip:
-          type: integer
-          description: Records skipped
-        top:
-          type: integer
-          description: Records returned
-        count:
-          type: integer
-          description: Total matching records
-        filter:
-          type: string
-          description: Applied filter expression
-        format:
-          type: string
-          description: Response format
-        orderby:
-          type: string
-          description: Sort order applied
-        select:
-          type: string
-          description: Fields selected
-        runDate:
-          type: string
-          format: date-time
-          description: Time query was executed
