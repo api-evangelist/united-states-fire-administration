@@ -126,54 +126,6 @@ components:
             $ref: '#/components/schemas/DataSet'
         metadata:
           $ref: '#/components/schemas/Metadata'
-    Metadata:
-      type: object
-      description: Response pagination and count metadata
-      properties:
-        skip:
-          type: integer
-          description: Records skipped
-        top:
-          type: integer
-          description: Records returned
-        count:
-          type: integer
-          description: Total matching records
-        filter:
-          type: string
-          description: Applied filter expression
-        format:
-          type: string
-          description: Response format
-        orderby:
-          type: string
-          description: Sort order applied
-        select:
-          type: string
-          description: Fields selected
-        runDate:
-          type: string
-          format: date-time
-          description: Time query was executed
-    DataSetField:
-      type: object
-      description: Field metadata for an OpenFEMA dataset
-      properties:
-        dataSetName:
-          type: string
-          description: Name of the dataset this field belongs to
-        name:
-          type: string
-          description: Field name
-        title:
-          type: string
-          description: Human-readable field title
-        description:
-          type: string
-          description: Field description
-        type:
-          type: string
-          description: Data type of the field
     DataSet:
       type: object
       description: An OpenFEMA dataset with metadata
@@ -203,3 +155,51 @@ components:
         dataFormat:
           type: string
           description: Data format (JSON, CSV, etc.)
+    DataSetField:
+      type: object
+      description: Field metadata for an OpenFEMA dataset
+      properties:
+        dataSetName:
+          type: string
+          description: Name of the dataset this field belongs to
+        name:
+          type: string
+          description: Field name
+        title:
+          type: string
+          description: Human-readable field title
+        description:
+          type: string
+          description: Field description
+        type:
+          type: string
+          description: Data type of the field
+    Metadata:
+      type: object
+      description: Response pagination and count metadata
+      properties:
+        skip:
+          type: integer
+          description: Records skipped
+        top:
+          type: integer
+          description: Records returned
+        count:
+          type: integer
+          description: Total matching records
+        filter:
+          type: string
+          description: Applied filter expression
+        format:
+          type: string
+          description: Response format
+        orderby:
+          type: string
+          description: Sort order applied
+        select:
+          type: string
+          description: Fields selected
+        runDate:
+          type: string
+          format: date-time
+          description: Time query was executed
