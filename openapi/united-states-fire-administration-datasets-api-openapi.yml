@@ -117,63 +117,6 @@ paths:
                       $ref: '#/components/schemas/DataSetField'
 components:
   schemas:
-    DataSetList:
-      type: object
-      properties:
-        OpenFemaDataSets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataSet'
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-    DataSet:
-      type: object
-      description: An OpenFEMA dataset with metadata
-      properties:
-        name:
-          type: string
-          description: Dataset name and endpoint identifier
-        title:
-          type: string
-          description: Human-readable title
-        description:
-          type: string
-          description: Dataset description
-        version:
-          type: integer
-          description: Current dataset version number
-        endpoint:
-          type: string
-          description: API endpoint path for this dataset
-        lastDataModifiedDate:
-          type: string
-          format: date-time
-          description: Date the dataset was last updated
-        recordCount:
-          type: integer
-          description: Total number of records in the dataset
-        dataFormat:
-          type: string
-          description: Data format (JSON, CSV, etc.)
-    DataSetField:
-      type: object
-      description: Field metadata for an OpenFEMA dataset
-      properties:
-        dataSetName:
-          type: string
-          description: Name of the dataset this field belongs to
-        name:
-          type: string
-          description: Field name
-        title:
-          type: string
-          description: Human-readable field title
-        description:
-          type: string
-          description: Field description
-        type:
-          type: string
-          description: Data type of the field
     Metadata:
       type: object
       description: Response pagination and count metadata
@@ -203,3 +146,60 @@ components:
           type: string
           format: date-time
           description: Time query was executed
+    DataSet:
+      type: object
+      description: An OpenFEMA dataset with metadata
+      properties:
+        name:
+          type: string
+          description: Dataset name and endpoint identifier
+        title:
+          type: string
+          description: Human-readable title
+        description:
+          type: string
+          description: Dataset description
+        version:
+          type: integer
+          description: Current dataset version number
+        endpoint:
+          type: string
+          description: API endpoint path for this dataset
+        lastDataModifiedDate:
+          type: string
+          format: date-time
+          description: Date the dataset was last updated
+        recordCount:
+          type: integer
+          description: Total number of records in the dataset
+        dataFormat:
+          type: string
+          description: Data format (JSON, CSV, etc.)
+    DataSetList:
+      type: object
+      properties:
+        OpenFemaDataSets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataSet'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+    DataSetField:
+      type: object
+      description: Field metadata for an OpenFEMA dataset
+      properties:
+        dataSetName:
+          type: string
+          description: Name of the dataset this field belongs to
+        name:
+          type: string
+          description: Field name
+        title:
+          type: string
+          description: Human-readable field title
+        description:
+          type: string
+          description: Field description
+        type:
+          type: string
+          description: Data type of the field
